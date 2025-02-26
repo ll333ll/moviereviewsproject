@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-danger">🎉 ¡Gracias por suscribirte!</h1>
+    <p class="text-center text-white">Te hemos registrado con el correo: <strong>{{ email }}</strong></p>
+    <div class="text-center">
+        <a href="{% url 'home' %}" class="btn btn-danger">🏠 Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}

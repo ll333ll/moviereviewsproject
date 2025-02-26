@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Noticias del Cine{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-danger">🎬 Últimas Noticias del Cine 🎥</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for item in news %}
+        <div class="col">
+            <div class="card shadow-lg bg-dark text-white">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center">
+                        {% if item.image %}
+                            <img src="{{ item.image.url }}" class="img-fluid rounded-start" alt="news image">
+                        {% else %}
+                            <img src="/media/images/default.jpg" class="img-fluid rounded-start" alt="default image">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-warning">{{ item.headline }}</h5>
+                            <p class="card-text">{{ item.body|truncatechars:150 }}</p>
+                            <p class="text-muted"><small>🗓 Publicado el {{ item.date }}</small></p>
+                            <a href="#" class="btn btn-danger btn-sm">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No hay noticias disponibles en este momento.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
